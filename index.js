@@ -1,13 +1,19 @@
+// vendor
 const express    = require('express');
 const bodyParser = require('body-parser');
 const Webtask    = require('webtask-tools');
+
+// modules
 const works = require('./works.js');
 const filters = require('./filters.js');
 const slugify = require('./utility/slugify.js');
-const app = express();
 
+// app
+
+const app = express();
 app.use(bodyParser.json());
 
+// routes
 app.get('/works', function(req, res) {
     const key = req.query.key;
     const genre = req.query.genre;
@@ -26,5 +32,6 @@ app.get('/works', function(req, res) {
     res.send(filteredWorks);
 });
 
+// exports
 module.exports = Webtask.fromExpress(app);
 module.exports.app = app;
