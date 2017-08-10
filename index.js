@@ -17,11 +17,11 @@ app.get('/works', function(req, res) {
     
     let filteredWorks = works;
     
-    if (key) { filteredWorks = filters.keyFilter(filteredWorks, key); }
-    if (genre) { filteredWorks = filters.genreFilter(filteredWorks, genre); }
-    if (mode) { filteredWorks = filters.modeFilter(filteredWorks, mode); }
-    if (opus) { filteredWorks = filters.opusFilter(filteredWorks, opus); }
-    if (instruments) { filteredWorks = filters.instrumentsFilter(filteredWorks, instruments); }
+    if (key) { filteredWorks = filters.key(filteredWorks, key); }
+    if (genre) { filteredWorks = filters.genre(filteredWorks, genre); }
+    if (mode) { filteredWorks = filters.mode(filteredWorks, mode); }
+    if (opus) { filteredWorks = filters.opus(filteredWorks, opus); }
+    if (instruments) { filteredWorks = filters.instruments(filteredWorks, instruments); }
 
     res.send(filteredWorks);
 });

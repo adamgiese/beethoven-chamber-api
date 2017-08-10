@@ -1,6 +1,6 @@
 const slugify = require('./utility/slugify.js');
 
-const keyFilter = function(works, key) {
+const key = function(works, key) {
     return works.filter(
         function(work) {
             return work.key.toLowerCase() === key.toLowerCase();
@@ -8,7 +8,7 @@ const keyFilter = function(works, key) {
     );
 };
 
-const genreFilter = function(works, genre) {
+const genre = function(works, genre) {
     return works.filter(
         function(work) {
             return slugify(work.genre) === slugify(genre);
@@ -16,7 +16,7 @@ const genreFilter = function(works, genre) {
     );
 };
 
-const modeFilter = function(works, mode) {
+const mode = function(works, mode) {
     return works.filter(
         function(work) {
             return slugify(work.mode) === slugify(mode);
@@ -24,7 +24,7 @@ const modeFilter = function(works, mode) {
     );
 };
 
-const opusFilter = function(works, opus) {
+const opus = function(works, opus) {
     return works.filter(
         function(work) {
             return work.opus === opus;
@@ -32,7 +32,7 @@ const opusFilter = function(works, opus) {
     );
 };
 
-const instrumentsFilter = function(works, instruments) {
+const instruments = function(works, instruments) {
     return works.filter(
         function(work) {
             let containsInstruments = true;
@@ -53,8 +53,8 @@ const instrumentsFilter = function(works, instruments) {
     )
 }
 
-module.exports.keyFilter = keyFilter;
-module.exports.genreFilter = genreFilter;
-module.exports.modeFilter = modeFilter;
-module.exports.opusFilter = opusFilter;
-module.exports.instrumentsFilter = instrumentsFilter;
+module.exports.key = key;
+module.exports.genre = genre;
+module.exports.mode = mode;
+module.exports.opus = opus;
+module.exports.instruments = instruments;
