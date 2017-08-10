@@ -31,6 +31,7 @@ app.get('/works', function(req, res) {
         }
     }
     
+    // filters
     if (key) { filteredWorks = filters.key(filteredWorks, key); }
     if (genre) { filteredWorks = filters.genre(filteredWorks, genre); }
     if (mode) { filteredWorks = filters.mode(filteredWorks, mode); }
