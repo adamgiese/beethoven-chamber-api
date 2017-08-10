@@ -37,7 +37,11 @@ app.get('/works', function(req, res) {
     if (opus) { filteredWorks = filters.opus(filteredWorks, opus); }
     if (instruments) { filteredWorks = filters.instruments(filteredWorks, instruments); }
 
-    res.send(filteredWorks);
+    if (filteredWorks.length) {
+        return res.send(filteredWorks);
+    } else {
+        return res.send({ 'message': 'There were no pieces matching the selected filters.' });
+    }
 });
 
 // exports
