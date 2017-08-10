@@ -6,6 +6,7 @@ const Webtask    = require('webtask-tools');
 // modules
 const works = require('./works.js');
 const filters = require('./filters.js');
+const validate = require('./validate.js');
 const slugify = require('./utility/slugify.js');
 
 // app
@@ -22,6 +23,13 @@ app.get('/works', function(req, res) {
     const instruments = req.query.instruments ? req.query.instruments.split(',') : [];
     
     let filteredWorks = works;
+
+    // validation
+    if (key) {
+        if (!validate.key(key)) {
+            return res.status(400).send({'message': 'Invalid key.'});
+        }
+    }
     
     if (key) { filteredWorks = filters.key(filteredWorks, key); }
     if (genre) { filteredWorks = filters.genre(filteredWorks, genre); }
